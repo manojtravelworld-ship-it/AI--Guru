@@ -1,0 +1,6 @@
+{
+  "name": "OpenVidya",
+  "description": "Advanced AI-powered educational OS featuring real-time learning, multi-role interactions, and voice narration.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
