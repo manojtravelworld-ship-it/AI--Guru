@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "System user",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "School": {
+      "title": "School",
+      "description": "Educational institution",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "country": { "type": "string" },
+        "state": { "type": "string" },
+        "district": { "type": "string" },
+        "place": { "type": "string" }
+      },
+      "required": ["name", "country", "state", "district", "place"]
+    },
+    "Board": {
+      "title": "Board",
+      "description": "Educational board",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "Class": {
+      "title": "Class",
+      "description": "School class",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "schoolId": { "type": "string" }
+      },
+      "required": ["name", "schoolId"]
+    },
+    "Subject": {
+      "title": "Subject",
+      "description": "Course subject",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "classId": { "type": "string" }
+      },
+      "required": ["name", "classId"]
+    },
+    "LessonPack": {
+      "title": "LessonPack",
+      "description": "Educational lesson materials",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "content": { "type": "object" },
+        "downloadUrl": { "type": "string" }
+      },
+      "required": ["title", "subjectId"]
+    },
+    "Download": {
+      "title": "Download",
+      "description": "User download record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "lessonPackId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "lessonPackId", "timestamp"]
+    },
+    "Progress": {
+      "title": "Progress",
+      "description": "Student progress",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "lessonPackId": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["userId", "lessonPackId", "status"]
+    },
+    "ScrapingJob": {
+      "title": "ScrapingJob",
+      "description": "Scraping task status",
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "progress": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["url", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "User", "description": "User profiles" },
+    "/schools/{schoolId}": { "schema": "School", "description": "School data" },
+    "/boards/{boardId}": { "schema": "Board", "description": "Boards data" },
+    "/classes/{classId}": { "schema": "Class", "description": "Classes data" },
+    "/subjects/{subjectId}": { "schema": "Subject", "description": "Subjects data" },
+    "/lessonPacks/{packId}": { "schema": "LessonPack", "description": "Lesson packs" },
+    "/downloads/{downloadId}": { "schema": "Download", "description": "Download history" },
+    "/progress/{progressId}": { "schema": "Progress", "description": "Student progress" },
+    "/scrapingJobs/{jobId}": { "schema": "ScrapingJob", "description": "Scraping jobs" },
+    "/generatedMaterials/{materialId}": { "schema": "LessonPack", "description": "Generated materials" }
+  }
+}
